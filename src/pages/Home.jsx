@@ -42,7 +42,6 @@ const Home = () => {
     { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
     { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
     { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
-  
   ];
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -55,7 +54,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-[#FDFBEE]  relative overflow-hidden">
+    <div className="bg-[#FDFBEE]  relative overflow-hidden overflow-y-scroll">
       <Navbar />
       {/* <Ex /> */}
       {/* Mobile Layout */}
@@ -98,13 +97,13 @@ const Home = () => {
       </div>
       {/* end  */}
 
-      <div className="md:h-screen relative md:mx-72 ">
+      <div className=" relative  ">
         <img
           src={Union}
           alt="Watermark"
           className="absolute w-full top-[140px] right-4"
         />
-        <div className="flex flex-col max-w-[1000px] mx-auto   mt-20">
+        <div className="flex flex-col max-w-[1030px] mx-auto   mt-20">
           <div className=" md:flex  opacity-95 ">
             {/* Image */}
             <div className="flex justify-center">
@@ -141,8 +140,12 @@ const Home = () => {
                 </div>
                 <hr style={{ borderColor: "#F5F5F5" }} />
                 <div className="flex gap-4 p-3">
-                  <p className="font-semibold text-[#184623]">All Task (5)</p>
-                  <p className="font-normal text-[#AAAAAA]">Completed</p>
+                  <p className="font-semibold text-[#184623] cursor-pointer">
+                    All Task (5)
+                  </p>
+                  <p className="font-normal text-[#AAAAAA] cursor-pointer">
+                    Completed
+                  </p>
                 </div>
                 <hr style={{ borderColor: "#F5F5F5" }} />
                 {/* inner content  */}
@@ -236,36 +239,34 @@ const Home = () => {
             <div className="flex">
               {divData.map((item, index) => (
                 <>
-                  {/* {selectedImageIndex === index ? ( */}
-                    <>
-                      <div
-                        key={index}
-                        className={`footer w-[128px] ${selectedImageIndex !== index && 'opacity-0' } px-2 py-2 flex`}
-                        style={{
-                          backgroundImage: `url(${FooterBackgroundImage})`,
-                        }}
-                      >
-                        <div>
-                          <p className="font-medium text-[#8D95C8]">
-                            {item.text1}
-                          </p>
-                          <p className="font-black text-[#8D95C8]">
-                            {item.text2}
-                          </p>
-                        </div>
-                        <div>
-                          <img src={Monke} alt="" className="h-6" />
-                        </div>
+                  <>
+                    <div
+                      key={index}
+                      className={`footer  ${
+                        selectedImageIndex !== index && "opacity-0"
+                      } px-2 py-2 flex`}
+                      style={{
+                        backgroundImage: `url(${FooterBackgroundImage})`,
+                      }}
+                    >
+                      <div>
+                        <p className="font-medium text-[#8D95C8]">
+                          {item.text1}
+                        </p>
+                        <p className="font-black text-[#8D95C8]">
+                          {item.text2}
+                        </p>
                       </div>
-                    </>
-               
+                      <div>
+                        <img src={Monke} alt="" className="h-6" />
+                      </div>
+                    </div>
+                  </>
                 </>
               ))}
-
-              {/* end footerbg  */}
             </div>
 
-            <div className="flex w-[128px]">
+            <div className="flex justify-center mx-8">
               {footerImages.map((item, index) => (
                 <>
                   <img
@@ -274,11 +275,7 @@ const Home = () => {
                     key={index}
                     onClick={() => handleImageClick(item, index)}
                     style={{ backgroundImage: `url(${FooterBackgroundImage})` }}
-                    className={` ${
-                      selectedImageIndex === index
-                        ? "opacity-50"
-                        : "opacity-100"
-                    }`}
+                    className={`  md:w-[130px] `}
                   />
                 </>
               ))}

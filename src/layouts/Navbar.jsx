@@ -50,7 +50,7 @@ const Navbar = () => {
             </button>
 
             {showDropdown && (
-              <div className="z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-40  dark:divide-gray-600 absolute top-0 right-0 mt-14 ">
+              <div className="z-10 font-normal bg-white divide-y divide-gray-100  shadow   dark:divide-gray-600 absolute top-0 right-0 mt-14 ">
                 <ul
                   className="py-2 text-sm text-gray-700 dark:text-gray-400"
                   aria-labelledby="dropdownLargeButton"
@@ -63,7 +63,7 @@ const Navbar = () => {
                       {" "}
                       <span className="flex">
                         <AiOutlineHome className="mr-2 h-[20px] " />
-                       Dashboard
+                        Dashboard
                       </span>{" "}
                     </a>
                   </li>
