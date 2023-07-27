@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../layouts/Navbar";
-import Cartoon from "../assets/cartoon.png";
+
 import Monke from "../assets/Monke.png";
 import Tweet from "../assets/tweet.png";
 import Mask from "../assets/mask.png";
@@ -17,7 +17,11 @@ import footerImg4 from "../assets/image 48.png";
 import footerImg5 from "../assets/image 49.png";
 import footerImg6 from "../assets/image 50.png";
 import footerImg7 from "../assets/image 51.png";
-import NavIcon from "../assets/Navicon.png";
+import FooterBackgroundImage from "../assets/footerbg.png";
+import Mobiledevice from "../assets/Mobiledevice.png";
+import Mobiledevice1 from "../assets/Mobiledevice1.png";
+import Line from "../assets/line.png";
+import Ex from "../pages/ex";
 
 const Home = () => {
   const footerImages = [
@@ -30,34 +34,87 @@ const Home = () => {
     footerImg6,
     footerImg7,
   ];
+  const divData = [
+    { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
+    { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
+    { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
+    { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
+    { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
+    { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
+    { text1: "Gen 2", text2: "SMB #1741", imgSrc: Monke },
+  
+  ];
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
-  const handleImageClick = (image) => {
+  const handleImageClick = (image, index) => {
     setSelectedImage(image);
+    setSelectedImageIndex(index);
+
+    console.log(index);
   };
 
   return (
-    <div className="bg-[#FDFBEE]  relative ">
+    <div className="bg-[#FDFBEE]  relative overflow-hidden">
       <Navbar />
+      {/* <Ex /> */}
+      {/* Mobile Layout */}
+      <div className="sm:hidden">
+        <div className="flex mt-14 mb-8 px-4 md:px-0">
+          <div className="flex-1 font-black text-[#184623]">
+            <img
+              src={FilterMonk}
+              alt=""
+              className="inline-block align-middle mr-1 "
+            />{" "}
+            MY SMB
+          </div>
+          <div className="font-black text-[#184623]">Points: 5,000</div>
+        </div>
 
-      <div className="relative mx-72 h-screen">
+        <div className="flex w-[128px] ">
+          <img
+            className="mr-2"
+            src={footerImg3}
+            alt="alt"
+            onClick={() => handleImageClick(footerImg3)}
+          />
+          <img
+            src={Mobiledevice}
+            alt="alt"
+            onClick={() => handleImageClick(Mobiledevice)}
+          />
+          <div
+            className=" bg-cover bg-no-repeat bg-center p-4"
+            style={{ backgroundImage: `url(${Mobiledevice1})`, width: "128px" }}
+          >
+            <p className="text-[#FF93A4] font-medium">Gen 3</p>
+            <p className="text-[#FF93A4] font-black">SMB #1741</p>
+          </div>
+        </div>
+        <div className="flex justify-center pt-8">
+          <img src={Line} alt="" />
+        </div>
+      </div>
+      {/* end  */}
+
+      <div className="md:h-screen relative md:mx-72 ">
         <img
           src={Union}
           alt="Watermark"
           className="absolute w-full top-[140px] right-4"
         />
         <div className="flex flex-col max-w-[1000px] mx-auto   mt-20">
-          <div className="flex  opacity-95 ">
+          <div className=" md:flex  opacity-95 ">
             {/* Image */}
-            <div className="">
+            <div className="flex justify-center">
               <img
-                src={selectedImage ? selectedImage : Cartoon}
+                src={selectedImage ? selectedImage : footerImg3}
                 alt="Sample Image"
-                className={`${
-                  selectedImage ? "h-[450px]" : "rounded-lg h-full"
-                }`}
+                className={" h-[340px] md:h-[450px] rounded-lg flex"}
               />
             </div>
+
             {/* Text */}
             <div>
               <div className=" p-4 bg-white relative h-full">
@@ -163,8 +220,8 @@ const Home = () => {
           </div>
           {/* footer images */}
 
-          <div>
-            <div className="flex mt-14 mb-8">
+          <div className="hidden sm:block">
+            <div className="flex mt-14 mb-8 px-4 md:px-0">
               <div className="flex-1 font-black text-[#184623]">
                 <img
                   src={FilterMonk}
@@ -175,7 +232,39 @@ const Home = () => {
               </div>
               <div className="font-black text-[#184623]">Points: 5,000</div>
             </div>
-            <div className="bg-red-500 p-4 inline-block "> shailesh</div>
+
+            <div className="flex">
+              {divData.map((item, index) => (
+                <>
+                  {/* {selectedImageIndex === index ? ( */}
+                    <>
+                      <div
+                        key={index}
+                        className={`footer w-[128px] ${selectedImageIndex !== index && 'opacity-0' } px-2 py-2 flex`}
+                        style={{
+                          backgroundImage: `url(${FooterBackgroundImage})`,
+                        }}
+                      >
+                        <div>
+                          <p className="font-medium text-[#8D95C8]">
+                            {item.text1}
+                          </p>
+                          <p className="font-black text-[#8D95C8]">
+                            {item.text2}
+                          </p>
+                        </div>
+                        <div>
+                          <img src={Monke} alt="" className="h-6" />
+                        </div>
+                      </div>
+                    </>
+               
+                </>
+              ))}
+
+              {/* end footerbg  */}
+            </div>
+
             <div className="flex w-[128px]">
               {footerImages.map((item, index) => (
                 <>
@@ -183,10 +272,13 @@ const Home = () => {
                     src={item}
                     alt="alt"
                     key={index}
-                    onClick={() => handleImageClick(item)}
-                    // className={` ${
-                    //   selectedImage === item ? "border-4 border-blue-500 " : ""
-                    // }`}
+                    onClick={() => handleImageClick(item, index)}
+                    style={{ backgroundImage: `url(${FooterBackgroundImage})` }}
+                    className={` ${
+                      selectedImageIndex === index
+                        ? "opacity-50"
+                        : "opacity-100"
+                    }`}
                   />
                 </>
               ))}

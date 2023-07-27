@@ -20,13 +20,23 @@ const Navbar = () => {
     >
       <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://flowbite.com/" className="flex items-center">
-          <img src={Logo} className="h-[50px] mr-3" alt="Flowbite Logo" />
+          <img
+            src={Logo}
+            className="h-[40px] sm:h-[50px] mr-3"
+            alt="Flowbite Logo"
+          />
+          <img src={Monke} alt="" className="h-8 sm:hidden ml-8" />
         </a>
-        <div className="flex md:order-2">
-          <img src={NavIcon} alt="" className="h-6 mr-14 mt-2" />
-          <img src={Monke1} alt="" className="h-12 mr-4" />
 
-          <div className="relative">
+        <div className="flex md:order-2">
+          <img
+            src={NavIcon}
+            alt=""
+            className="h-6 mr-14 mt-2 hidden sm:block"
+          />
+          <img src={Monke1} alt="" className="h-12 mr-4 hidden sm:block" />
+
+          <div className="relative hidden sm:block">
             <button
               type="button"
               className="text-[#184623] bg-[#FFFFFF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-md px-4 py-3 text-center mr-3 md:mr-0 dark:focus:ring-blue-800"
@@ -53,7 +63,7 @@ const Navbar = () => {
                       {" "}
                       <span className="flex">
                         <AiOutlineHome className="mr-2 h-[20px] " />
-                        Leaderboard
+                       Dashboard
                       </span>{" "}
                     </a>
                   </li>
@@ -116,7 +126,7 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        <img src={Monke} alt="" className="h-14 lg:ml-48" />
+        <img src={Monke} alt="" className="h-14 lg:ml-48 hidden sm:block" />
       </div>
     </nav>
   );
